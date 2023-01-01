@@ -9,14 +9,12 @@ const createListing = async (req, res)=>{
     res.status(200).json(newListing)
     } catch (error) {
         res.status(420).json(error)
-        console.log(error)
     }
     
 }
 
 const getAllListings = async (req, res)=>{
     const {category, createdBy, price,title} = req.query
-    const {userId}= req.user || 1;
     let queryObject = {}
     if (category){
         queryObject.category = category;
@@ -62,7 +60,7 @@ const getSingleListing = async (req, res)=>{
         throw new NotFoundError(`The listing with id ${id} does not exist`)
     }
     res.status(200).json({listing})
-    console.log(listing)
+    
 
 }
 
@@ -85,19 +83,29 @@ const editListing = async(req, res)=>{
     
 }
 
-const deleteListing = async(req, res)=>{
-    const {params:{id}} = req
+const deleteListin = async(req, res)=>{
     const {userId} = req.user
 
-    if(!id){
-        throw new BadRequestError("Please provide an id.")
-    }
-    const listing = await Listing.deleteOne({_id:id, createdBy:userId})
-    if(!listing){
-        throw new NotFoundError(`The listing with id ${id} does not exist`)
-    }
-    res.status(200).json({msg:`The listing with the id ${id} was deleted successfully`})
+    const listing = await Listing.findByIdAndRemove({ _id: req.params.id, createdBy:userId})
+
+    res.status(200).json({msgf:`The listing with the id ${id} was deleted successfully`})
 }
+
+const deleteListing = async (req, res) => {
+    const {
+      user: { userId },
+      params: { id: listingId },
+    } = req;
+  
+    const listing = await Listing.findByIdAndRemove({
+      _id: listingId,
+      createdBy: userId,
+    });
+    if (!listing) {
+      throw new NotFoundError(`No listing with id ${listingId}`);
+    }
+    res.status(200).send();
+  };
 
 module.exports = {createListing,getAllListings,getSingleListing,editListing,deleteListing}
 

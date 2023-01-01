@@ -4,8 +4,6 @@ const {BadRequestError} = require('../errors')
 
 
 const uploadImages = async(req,res,next)=>{
-    console.log(req.body)
-    console.log(req.files)
     if(!req.files){
         throw new BadRequestError("No files attached")
     }
