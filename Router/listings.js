@@ -10,7 +10,7 @@ const {
 const Router = Express.Router()
 
 Router.route('/').get(getAllListings).post(authentication,createListing)
-Router.route('/uploadimg').post(authentication,uploadImages)
+Router.route('/uploadimg').post(uploadImages)
 Router.route('/:id').get(getSingleListing).patch(authentication,editListing).delete(authentication,deleteListing)
 
 module.exports = Router
