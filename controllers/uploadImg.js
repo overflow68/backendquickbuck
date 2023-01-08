@@ -37,6 +37,7 @@ const uploadImagesOld = async(req,res,next)=>{
               fs.writeFile(path, req.files.image.data, (writeErr) => {
                 if (writeErr) {
                   console.error(`An error occurred while writing to the temporary file: ${writeErr}`);
+                  res.status(200).json({writeErr})
                 } else {
                   console.log(`Successfully added the image data to the temporary file`);
           
