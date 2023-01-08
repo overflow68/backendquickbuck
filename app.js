@@ -18,7 +18,9 @@ var bodyParser = require('body-parser');
 
 
 const app = express();
-app.use(cors())
+app.use(cors({
+  origin:"https://overflow68.github.io"
+}))
 const errorMiddleware = require('./middleware/error-handler');
 
 const { PORT } = process.env;
