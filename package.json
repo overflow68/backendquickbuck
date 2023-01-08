@@ -2,7 +2,7 @@
   "name": "quickbuck",
   "version": "1.0.0",
   "description": "An application where you can sell your goods.",
-  "main": "api/index.js",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
   },

@@ -1,9 +1,9 @@
 require('dotenv').config();
 require('express-async-errors');
 const express = require('express');
-const AuthRouter = require('../Router/auth');
-const ListingRouter = require('../Router/listings');
-const connectDB = require('../db/connectDB');
+const AuthRouter = require('./Router/auth');
+const ListingRouter = require('./Router/listings');
+const connectDB = require('./db/connectDB');
 const fileUpload = require('express-fileupload');
 const cors = require('cors')
 const cloudinary = require("cloudinary").v2
@@ -21,7 +21,7 @@ const app = express();
 app.use(cors({
   origin:"https://overflow68.github.io"
 }))
-const errorMiddleware = require('../middleware/error-handler');
+const errorMiddleware = require('./middleware/error-handler');
 
 const { PORT } = process.env;
 
