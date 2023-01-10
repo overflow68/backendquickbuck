@@ -40,17 +40,7 @@ const uploadImagesOld = async(req,res,next)=>{
                   res.status(200).json({writeErr})
                 } else {
                   console.log(`Successfully added the image data to the temporary file`);
-          
-                  cloudinary.uploader.upload(path)
-                  .then(function(image) {
-                    // Set req.body.image to the secure URL of the image
-                    cleanup()
-                    res.status(200).json({pic:image.secure_url})
-                  })
-                  .catch(function(error) {
-                    res.status(400).json({error})
-                  });
-                  
+                  res.status(200).json({pic:"it works"})
                 }
               });
             }
