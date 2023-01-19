@@ -3,6 +3,7 @@ require('express-async-errors');
 const express = require('express');
 const AuthRouter = require('./Router/auth');
 const ListingRouter = require('./Router/listings');
+const MessagesRouter = require('./Router/messages')
 const connectDB = require('./db/connectDB');
 const fileUpload = require('express-fileupload');
 const cors = require('cors')
@@ -35,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/v1/auth',AuthRouter);
 app.use('/api/v1/listings',ListingRouter)
+app.use('/api/v1/messages',MessagesRouter)
 app.use(errorMiddleware);
 
 app.listen(PORT, async () => {
