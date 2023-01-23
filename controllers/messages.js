@@ -8,9 +8,9 @@ const sendMessage = async(req,res)=>{
     
 
 }
-
+           
 const getMessages = async(req,res)=>{
-    const {receiver} = req.body
+    const {receiver} = req.params
     const {userId} = req.user
     
  const received = await Message.find({createdBy:receiver,to:userId})
@@ -20,4 +20,21 @@ const getMessages = async(req,res)=>{
 
 }
 
-module.exports = {sendMessage,getMessages}
+const getConvos = async(req,res)=>{
+    const {userId} = req.user
+    const convos =[]
+    const rawConvos = await Message.find({to:userId})
+
+    rawConvos.forEach(item=>{
+        convos.push([item.username,item.createdBy])
+    })
+    const arrConvos = convos.filter(( t={}, a=> !(t[a]=a in t) ))
+    const finalConvos = []
+    arrConvos.forEach(item =>{
+        const [username,id] = item
+        finalConvos.push({username,id})
+    })
+    res.status(200).json(finalConvos)
+}
+
+module.exports = {sendMessage,getMessages,getConvos}

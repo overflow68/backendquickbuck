@@ -8,7 +8,7 @@ const createListing = async (req, res)=>{
         const newListing = await Listing.create({createdBy:userId,username:username, ...req.body})
     res.status(200).json(newListing)
     } catch (error) {
-        console.log(req.body)
+        
         res.status(420).json(error)
     }
     
@@ -40,6 +40,7 @@ const getAllListings = async (req, res)=>{
     
     try {
         const result = await Listing.find(queryObject)
+
         res.status(200).json({result})
     } catch (error) {
         throw new BadRequestError("Query not supported")
