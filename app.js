@@ -24,7 +24,7 @@ const app = express();
 const httpServer = createServer(app)
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://quickbuck.onrender.com',
   methods: ['GET', 'POST']
 };
 socket(httpServer, corsOptions);

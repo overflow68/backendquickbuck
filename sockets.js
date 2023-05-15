@@ -8,16 +8,16 @@ module.exports = function (server, corsOptions) {
   function isAnyOtherUserInRoom(roomId) {
     const room = io.sockets.adapter.rooms.get(roomId);
     if (room) {
-      return true //join that room
+      return true 
     }
-    return false; //create your own room starting with your id
+    return false;
   }
 
-  // ... rest of the code ...
+ 
   
   io.on('connection', (socket) => {
     console.log("user connected "+socket.id)
-    // ... rest of the code ...
+   
     socket.on('disconnect', () => {
         console.log('A user disconnected:', socket.id);
       });
