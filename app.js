@@ -24,7 +24,7 @@ const app = express();
 const httpServer = createServer(app)
 
 const corsOptions = {
-  origin: 'https://overflow68.github.io/quickbuck/',
+  origin: 'https://overflow68.github.io',
   methods: ['GET', 'POST']
 };
 socket(httpServer, corsOptions);
