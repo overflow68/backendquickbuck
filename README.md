@@ -130,16 +130,5 @@ To use this API, you need to authenticate. You can obtain an authentication toke
 - **Authentication:** Not required.
 - **Response:** The URL of the uploaded image.
 
-## Error Handling
 
-- The API returns appropriate error messages and status codes for various scenarios, such as invalid requests or authentication failures.
 
-## Contact Information
-
-For any inquiries or support, please contact us at [email@example.com].
-
-## Version History
-
-- Version 1.0.0 (September 1, 2023): Initial release of the E-Commerce API.
-
-Thank you for using our E-Commerce API! We hope this documentation helps you integrate with our platform successfully.
