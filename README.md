@@ -6,6 +6,9 @@ Welcome to the E-Commerce API documentation. This API allows users to create lis
 
 To use this API, you need to authenticate. You can obtain an authentication token by registering or logging in.
 
+## Base URL
+/api/v1
+
 ### Register
 
 **Endpoint:** `/register`
